@@ -1,0 +1,37 @@
+LoginWindow {
+    background-color: rgba(255, 255, 255, 255);
+}
+
+#SignInWidget, #SignUpWidget, #RestoreWidget {
+    border-radius: 2px;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: lightblue;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+QLineEdit {
+    padding: 5px;
+    
+    border-radius: 2px;
+    border: 1px solid rgb(200, 200, 200);
+
+    color: black;
+}
+
+QPushButton {
+    padding: 10px;
+    border-radius: 2px;
+
+    background-color: rgba(31, 111, 235, 255);
+
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+QPushButton:hover {
+    background-color: rgba(31, 111, 235, 100);
+}    
+QPushButton:pressed {
+    background-color: rgba(31, 111, 235, 150);
+}    
