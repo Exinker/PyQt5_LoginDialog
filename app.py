@@ -6,7 +6,8 @@ from PyQt5 import QtWidgets
 from wigets.loginDialog import LoginDialog
 from database.client import Client
 
-class MainWindow(QtWidgets.QMainWindow):
+
+class MainWindow(QtWidgets.QMainWindow):  # FIXME: replace MainWindow
     '''Placeholder of the main window'''
 
     def __init__(self, user):

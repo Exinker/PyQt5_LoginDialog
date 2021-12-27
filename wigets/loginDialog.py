@@ -1,4 +1,5 @@
 
+import logging
 import os
 
 from PyQt5 import QtWidgets, QtCore, QtGui
@@ -65,7 +66,7 @@ class SignInWidget(BaseWidget):
         self.passwordLineEdit.setObjectName('passwordLineEdit')
         self.passwordLineEdit.setPlaceholderText('Password')
         self.passwordLineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.passwordLineEdit.returnPressed.connect(self.onSignInButtonClicked)
+        # self.passwordLineEdit.returnPressed.connect(self.onSignInButtonClicked)  # This is not required since a QDialog window.
         layout.addWidget(self.passwordLineEdit)
 
         restoreLabel = QtWidgets.QLabel(
@@ -84,6 +85,7 @@ class SignInWidget(BaseWidget):
 
         signInPushButton = QtWidgets.QPushButton(text='Sign In', parent=self)
         signInPushButton.setObjectName('signInPushButton')
+        signInPushButton.setAutoDefault(True)  # It is a default value in QDialog window.
         signInPushButton.clicked.connect(self.onSignInButtonClicked)
         layout.addWidget(signInPushButton)
 
@@ -112,14 +114,17 @@ class SignInWidget(BaseWidget):
     def onSignInButtonClicked(self):
         email = self.emailLineEdit.text()
         password = self.passwordLineEdit.text()
+
+        parent = self.parent()
+        logger = logging.getLogger('app')
         
         #
-        parent = self.parent()
-
         status = parent.client.sign_in(
             email=email,
             password=password,
         )
+
+        logger.info(f'SignIn email: {email} status: {status}')
 
         if status:
             parent.set_status(
@@ -159,6 +164,7 @@ class SignUpWidget(BaseWidget):
 
         signUpPushButton = QtWidgets.QPushButton(text='Sign Up', parent=self)
         signUpPushButton.setObjectName('signUpPushButton')
+        signUpPushButton.setAutoDefault(True)  # It is a default value in QDialog window.
         signUpPushButton.clicked.connect(self.onSignUpButtonClicked)
         layout.addWidget(signUpPushButton)
 
@@ -183,14 +189,21 @@ class SignUpWidget(BaseWidget):
         self.layout.addWidget(frame)
 
     def onSignUpButtonClicked(self):
-        print('On SignUp button clicked!')
+        email = self.emailLineEdit.text()
+        username = self.usernameLineEdit.text()
+        password = self.passwordLineEdit.text()
 
-        client: Client = self.parent().client
-        status = client.sign_up(
-            email=self.emailLineEdit.text(),
-            username=self.usernameLineEdit.text(),
-            password=self.passwordLineEdit.text(),
+        parent = self.parent()
+        logger = logging.getLogger('app')
+
+        #
+        status = parent.client.sign_up(
+            email=email,
+            username=username,
+            password=password,
         )
+
+        logger.info(f'SignUp email: {email} status: {status}')
 
         if status:
             self.setCurrectWidget(kind='signInWidget')
@@ -207,14 +220,15 @@ class RestoreWidget(BaseWidget):
         frame = QtWidgets.QFrame(parent=self)
         layout = QtWidgets.QVBoxLayout(frame)
 
-        emailLineEdit = QtWidgets.QLineEdit('', parent=self)
-        emailLineEdit.setPlaceholderText('Email address')
-        layout.addWidget(emailLineEdit)
+        self.emailLineEdit = QtWidgets.QLineEdit('', parent=self)
+        self.emailLineEdit.setPlaceholderText('Email address')
+        layout.addWidget(self.emailLineEdit)
 
         layout.addStretch()
 
         restorePushButton = QtWidgets.QPushButton(text='Restore password', parent=self)
         restorePushButton.clicked.connect(self.onRestoreButtonClicked)
+        restorePushButton.setAutoDefault(True)  # It is a default value in QDialog window.
         layout.addWidget(restorePushButton)
 
         self.layout.addWidget(frame)
@@ -239,9 +253,16 @@ class RestoreWidget(BaseWidget):
         self.layout.addWidget(frame)
 
     def onRestoreButtonClicked(self):
-        print('On restore password clicked')
+        email = self.emailLineEdit.text()
 
-        self.setCurrectWidget(kind='signInWidget')
+        parent = self.parent()
+        logger = logging.getLogger('app')
+        
+        #
+        status = False
+
+        logger.info(f'RestorePassword email: {email} status: {status}')
+
 
 
 class LoginDialog(QtWidgets.QDialog):

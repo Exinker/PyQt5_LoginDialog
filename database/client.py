@@ -13,7 +13,7 @@ class Client():
         client = MongoClient(
             host=DATABASE_HOST,
             port=DATABASE_PORT,
-        )
+        )  # FIXME: add status log
         
         self.users = client.PyQt5_LoginDialog.users
         self.users.create_index('email')
