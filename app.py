@@ -1,9 +1,11 @@
 
+import os
 import sys
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
 from wigets.loginDialog import LoginDialog
+from wigets.centralWidget import CentralWidget
 from database.client import Client
 
 
@@ -13,12 +15,18 @@ class MainWindow(QtWidgets.QMainWindow):  # FIXME: replace MainWindow
     def __init__(self, user):
         super().__init__()
 
-        #
-        username = user['username']
-        self.setWindowTitle(f'Welcome, {username}')
+        self.username = user['username']
 
-        centralWidget = QtWidgets.QWidget()
-        self.setCentralWidget(centralWidget)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+
+        # style
+        filepath = os.path.join('.', 'styles', 'mainWindow.css')
+        style = open(filepath, 'r').read()
+        self.setStyleSheet(style)
+
+        #
+        self.setCentralWidget(CentralWidget())
 
         #
         self.show()

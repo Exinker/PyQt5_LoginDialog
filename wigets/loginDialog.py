@@ -70,7 +70,7 @@ class SignInWidget(BaseWidget):
         layout.addWidget(self.passwordLineEdit)
 
         restoreLabel = QtWidgets.QLabel(
-            text='''<a href="https://www.google.com/">
+            text='''<a href="https://">
                 <span style="color: darkblue; text-decoration: none;">
                     Forgotten your password?
                 </span>
@@ -98,7 +98,7 @@ class SignInWidget(BaseWidget):
         layout = QtWidgets.QVBoxLayout(frame)
 
         signUpLabel = QtWidgets.QLabel(
-            text='''Don\'t have an account? <a href="https://www.google.com/">
+            text='''Don\'t have an account? <a href="https://">
                 <span style="font-weight: bold; color: rgba(31, 111, 235, 255); text-decoration: none;">
                     Sign up
                 </span>
@@ -175,7 +175,7 @@ class SignUpWidget(BaseWidget):
         layout = QtWidgets.QVBoxLayout(frame)
 
         signInLabel = QtWidgets.QLabel(
-            text='''Back to <a href="https://www.google.com/">
+            text='''Back to <a href="https://">
                 <span style="font-weight: bold; color: rgba(31, 111, 235, 255); text-decoration: none;">
                     sign in
                 </span>
@@ -239,7 +239,7 @@ class RestoreWidget(BaseWidget):
         layout = QtWidgets.QVBoxLayout(frame)
 
         signInLabel = QtWidgets.QLabel(
-            text='''Back to <a href="https://www.google.com/">
+            text='''Back to <a href="https://">
                 <span style="font-weight: bold; color: rgba(31, 111, 235, 255); text-decoration: none;">
                     sign in
                 </span>

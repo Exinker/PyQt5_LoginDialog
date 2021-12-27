@@ -1,0 +1,22 @@
+
+CentralWidget {
+    background-color: rgba(243, 243, 243, 100);
+    border-radius: 10px;
+}
+
+QLabel {
+    color: rgb(31, 111, 235);
+
+    font-family: 'Segoe UI';
+}
+#homeLabel {
+    font-size: 24pt;
+}
+#infoLabel {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: rgb(0, 0, 0);
+	
+    font-size: 8pt;
+}
