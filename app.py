@@ -5,31 +5,8 @@ import sys
 from PyQt5 import QtWidgets, QtCore
 
 from wigets.loginDialog import LoginDialog
-from wigets.centralWidget import CentralWidget
+from wigets.mainWindow import MainWindow
 from database.client import Client
-
-
-class MainWindow(QtWidgets.QMainWindow):  # FIXME: replace MainWindow
-    '''Placeholder of the main window'''
-
-    def __init__(self, user):
-        super().__init__()
-
-        self.username = user['username']
-
-        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
-
-        # style
-        filepath = os.path.join('.', 'styles', 'mainWindow.css')
-        style = open(filepath, 'r').read()
-        self.setStyleSheet(style)
-
-        #
-        self.setCentralWidget(CentralWidget())
-
-        #
-        self.show()
 
 
 if __name__ == '__main__':

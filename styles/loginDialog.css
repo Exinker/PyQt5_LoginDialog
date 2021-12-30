@@ -1,6 +1,11 @@
-LoginWindow {
-    background-color: rgba(255, 255, 255, 255);
+LoginDialog {
+    background-color: rgb(243, 243, 243);
 }
+
+MainWindow {
+    background-color: rgb(243, 243, 243);
+}
+
 
 #SignInWidget, #SignUpWidget, #RestoreWidget {
     border-radius: 2px;

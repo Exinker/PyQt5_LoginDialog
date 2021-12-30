@@ -264,7 +264,6 @@ class RestoreWidget(BaseWidget):
         logger.info(f'RestorePassword email: {email} status: {status}')
 
 
-
 class LoginDialog(QtWidgets.QDialog):
 
     def __init__(self, client):
@@ -273,6 +272,8 @@ class LoginDialog(QtWidgets.QDialog):
         self.client = client
         self.status = False
         self.user = None
+
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
 
         # style
         filepath = os.path.join('.', 'styles', 'loginDialog.css')
